@@ -1,0 +1,210 @@
+bri = "C:/Users/briana_amezcua/Downloads/i2.wav"
+bela = "C:/Users/briana_amezcua/Downloads/2.wav"
+intro = "C:/Users/briana_amezcua/Downloads/one.wav"
+trans = "C:/Users/briana_amezcua/Downloads/two.wav"
+trans2 = "C:/Users/briana_amezcua/Downloads/three.wav"
+money_trees = "C:/Users/briana_amezcua/Downloads/six.wav"
+money_treestwo = "C:/Users/briana_amezcua/Downloads/seven.wav"
+
+sample intro
+
+sleep 9
+
+o = 0.3
+
+a = 7
+p = 2
+
+sample bri, amp: 2.5
+
+use_synth :piano
+
+sleep 12.4
+
+live_loop:one do
+  104.times do
+    sample :drum_cymbal_closed,amp:  o
+    sleep 0.444
+    o = o + 0.01
+  end
+  stop
+end
+
+sleep 3.3
+
+live_loop:five do
+  3.times do
+    use_bpm 131
+    #measure
+    sleep 1.5
+    play :e4
+    sleep 0.5
+    play :e4
+    sleep 1
+    play :e4
+    sleep 0.5
+    play :gs4
+    sleep 0.5
+    #measure 2
+    play :gs4
+    sleep 1
+    play :fs4
+    sleep 0.5
+    play :e4
+    sleep 0.5
+    play :e4
+    sleep 1
+    play :cs4
+    sleep 0.5
+    play :es4
+    sleep 0.5
+    #measure 3
+    play :es4
+    sleep 1
+    play :fs4
+    sleep 1
+    play :fs4
+    sleep 2
+    #measure 4
+    sleep 4
+    #measure 5
+    sleep 1
+    play :e4
+    sleep 1
+    play :e4
+    sleep 1
+    play :e4
+    sleep 1
+    #measure 6
+    play :gs4
+    sleep 1
+    play :b4
+    sleep 1
+    play :b4
+    sleep 1
+    play :b4
+    sleep 0.5
+    play :cs5
+    sleep 7.5
+  end
+  stop
+end
+
+sleep 1.196
+
+live_loop:two do
+  24.times do
+    sample :drum_bass_soft,amp: 0.6
+    sleep 1.78
+  end
+  stop
+end
+
+sleep 41.5
+
+sample :perc_swoosh
+
+sleep 0.5
+
+sample trans2, amp: 3.7
+
+sleep 16.1
+
+sample trans, amp: 3.7
+
+sleep 13.6
+
+ari = 0
+use_bpm 140
+first = [:fs4,:e4,:fs4,:e4,:fs4,:b3,:b3,:e4]
+second = [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]
+b = 0
+c = 0
+
+live_loop:seven do
+  4.times do
+    sample money_treestwo, amp: 2
+    sleep 16
+  end
+  stop
+end
+
+use_synth :tri
+define :firstp do
+  play :fs4
+  sleep 0.5
+  play :g4
+  sleep 0.5
+  play :fs4
+  sleep 0.5
+  play :e4
+  sleep 0.5
+end
+
+live_loop:one do
+  16.times do
+    sample :drum_cymbal_pedal, amp: 1
+    sleep 4
+  end
+  stop
+end
+
+live_loop:two do
+  4.times do
+    with_fx :bitcrusher, amp: 0.5 do
+      firstp
+      8.times do
+        play first[b]
+        b = b + 1
+        sleep second[c]
+        c = c + 1
+      end
+      b = 0
+      c = 0
+      play :e4
+      sleep 2
+      play :b2
+      sleep 0.5
+      play :e4
+      sleep 0.5
+      play :fs4
+      sleep 0.5
+      play :e4
+      sleep 0.5
+      
+      play :fs4
+      sleep 0.5
+      play :e4
+      sleep 0.5
+      play :fs4
+      sleep 0.5
+      play :e4
+      sleep 0.5
+      play :fs4
+      sleep 0.5
+      play :b3
+      sleep 0.5
+      play :b3
+      sleep 0.5
+      play :e4
+      sleep 1.5
+    end
+    sleep 1
+  end
+  stop
+end
+
+sleep 63.25
+
+live_loop:three do
+  4.times do
+    sample money_trees, amp: p
+    p = p - 0.5
+    sleep 16
+  end
+  stop
+end
+
+sleep 64
+
+sample :perc_swoosh
