@@ -1,10 +1,33 @@
 bri = "C:/Users/briana_amezcua/Downloads/i2.wav"
+
 bela = "C:/Users/briana_amezcua/Downloads/2.wav"
+
 intro = "C:/Users/briana_amezcua/Downloads/one.wav"
+
 trans = "C:/Users/briana_amezcua/Downloads/two.wav"
+
 trans2 = "C:/Users/briana_amezcua/Downloads/three.wav"
+
 money_trees = "C:/Users/briana_amezcua/Downloads/six.wav"
+
 money_treestwo = "C:/Users/briana_amezcua/Downloads/seven.wav"
+
+define :measureone do |d1, d2, d3, d4|
+  sleep 1.5
+  play d1
+  sleep 0.5
+  play d2
+  sleep 1
+  play d3
+  sleep 0.5
+  play d4
+  sleep 0.5
+end
+
+naomi = [:gs4,:fs4,:e4,:e4,:cs4,:es4]
+mira = [1,0.5,0.5,1,0.5,0.5]
+n = 0
+m = 0
 
 sample intro
 
@@ -35,29 +58,17 @@ sleep 3.3
 live_loop:five do
   3.times do
     use_bpm 131
-    #measure
-    sleep 1.5
-    play :e4
-    sleep 0.5
-    play :e4
-    sleep 1
-    play :e4
-    sleep 0.5
-    play :gs4
-    sleep 0.5
+    #measure 1
+    measureone :e4, :e4, :e4, :gs4
     #measure 2
-    play :gs4
-    sleep 1
-    play :fs4
-    sleep 0.5
-    play :e4
-    sleep 0.5
-    play :e4
-    sleep 1
-    play :cs4
-    sleep 0.5
-    play :es4
-    sleep 0.5
+    6.times do
+      play naomi[n]
+      n = n + 1
+      sleep mira[m]
+      m = m + 1
+    end
+    n = 0
+    m = 0
     #measure 3
     play :es4
     sleep 1
@@ -130,14 +141,14 @@ live_loop:seven do
 end
 
 use_synth :tri
-define :firstp do
-  play :fs4
+define :firstp do |h1, h2, h3, h4|
+  play h1
   sleep 0.5
-  play :g4
+  play h2
   sleep 0.5
-  play :fs4
+  play h3
   sleep 0.5
-  play :e4
+  play h4
   sleep 0.5
 end
 
@@ -152,7 +163,7 @@ end
 live_loop:two do
   4.times do
     with_fx :bitcrusher, amp: 0.5 do
-      firstp
+      firstp :fs4, :g4, :fs4, :e4
       8.times do
         play first[b]
         b = b + 1
@@ -208,3 +219,4 @@ end
 sleep 64
 
 sample :perc_swoosh
+
